@@ -43,10 +43,10 @@ mit einbezogen.
 
 Das Informatikstudium an der TU-Dresden verlangt den Studenten eine Gruppenarbeit während des dritten Semesters
 ab. Für nicht wenige ist dieses, das erste Projekt in dem sie mit anderen zusammen an einem Gemeinsamen Ziel
-arbeiten müssen. Neben der Kommunikation, verlangt die Menge an Quellcode-Zeilen eine gute Organisation und
+arbeiten müssen. Neben der Kommunikation, verlangt die Menge an Quelltext-Zeilen eine gute Organisation und
 kommunikation. 
 
-Die Arbeit aus dem dritten Semster umfasst in etwa 8000 Zeilen Quellcode, in Realen Programmen, steigt die
+Die Arbeit aus dem dritten Semster umfasst in etwa 8000 Zeilen Quelltext, in Realen Programmen, steigt die
 Anzahl von Zeilen und von verwendeten Technologien stark an. Diese Erfahrungen sehe ich als große Bereicherung.
 
 
@@ -59,6 +59,8 @@ bis zum 31. Januar 2014, in der \href{https://alaun.de/home/}{Alaun GmbH} absolv
 
 \subsection{Impressum}
 
+\begin{minipage}{\linewidth}
+
 alaun GmbH \\
 Hoyerswerdaer Straße 20 \\
 01099 Dresden \\
@@ -68,42 +70,52 @@ Fax (0351) 563406-29 \\
 
 mail@alaun.de 
 
+\end{minipage}
+
 \subsection{Übersicht}
 
 Bei der \href{https://alaun.de/home/}{Alaun GmbH} handelt es sich um ein Unternehmen mit Sitz in Dresden.
-Hier wird aktuell die Entwicklung zweier Hauptprojekte von 11 Mitarbeitern voran getrieben.
-Zum einen wird eine Verwaltungssoftware für eine in Dresden ansässige Brauerrei gepflegt,
-zum anderen und Kernaspekt des Unternehmens ist die Wartung und Neuentwicklung eines Content-Management-Systems,
-mit welchem die Sparkassen Deutschland weit ihre Internet-Auftritte verwalten.
-Die Mitarbeiter der \href{https://alaun.de/home/}{Alaun GmbH} kommen aus verschiedensten Fachbereichen wie der Wirtschaft,
-Physik und Informatik. 
+Die \href{https://alaun.de/home/}{Alaun GmbH} beschäftigt 11 Mitarbeiter, die auf zwei Hauptprojekte verteilt
+sind. Das erste, Business ByDesign soll hier nur der Vollständigkeitshalber erwähnt werden, 
+da ich an diesem Projekt nicht beteiligt war. Das zweite trägt Firmen Intern den Titel \textit{Eine neue Welt},
+es ist ehr ein Arbeitsbegriff für zwei Content Management Systeme, im Folgenden mit CMS abgekürzt deren Inhalte
+ich im entsprechenden Unterpunkt erläutern werde.
 
-\newpage
+\subsection{Business ByDesign}
 
-\section{An die Arbeit}
+Unter dem Namen Business ByDesign werden Anwendungen und Komplettlösungen anderer Unternehmen für den
+Endkunden angepasst. So auch eine SAP Software die bei einer in Dresden ansässigen Brauerrei zum Einsatz kommt.
+
+\subsection{Eine neue Welt}
+
+Im Jahr 2013 began der Verkauf des CMS-tools Elexir an die Sparkassen Deutschlandweit. Mit diesem Tool werden
+die Internetauftritte der einzelnen Institute gestalltet. Besonders hervor zu heben ist die Größenordung und
+die Anzahl der zu verwaltenden Projekte. Jedes Institut gestalltet im Prinzip unabhängig von den anderen seine Onlinepräsenz.
+Gänzlich voneinander zu trennen sind diese auch nicht, da Werbung, Kundeninformationen und Designs in
+Regionen basierten Hierarchien vorgegeben und geteilt werden.
+
+Nach 13 Jahren Laufzeit hat die \href{https://alaun.de/home/}{Alaun GmbH} mit einer Neuauflage des Projektes begonnen.
+Mit einem Sprachbasierten Ansatz wird Problemen begegnet, die durch Verteilte Entwicklung in dieser Größenordnung
+entstehen. Namen und Ids werden Automatisch generiert und vor dem Benutzer verborgen. 
+Die Entwickelte Sprache, trägt den Namen Cauldron und wird durch ein Java-Backend realisiert.
+Cauldron ist eine XML-Basierte Sprache und dient zur Entwicklung von Internetseiten.
+Im Gegensatz zu HTML, gibt es eine Vererbungshierachie. Durch diese wird Redundanz beim Programmieren vermieden.
+Neben den sogenannenten \textit{namespaces} gibt es noch \textit{Module} und \textit{Fragmente} durch die sich,
+Programmkomplexe kapseln und überlagern können. 
+
+
+\section{Der Verlauf}
 
 \subsection{Der erste Arbeitstag}
 
 Am 2. September 2013 um 0900 begann für mich die Zeit in der \href{https://alaun.de/home/}{Alaun GmbH}.
-Mir wurden die beiden haupt Projekte der Firma vorgestellt. Das erste Projekt beschäftigt sich mit einer Allgemeinen
-Verwaltungssoftware für eine lokal ansäßige Brauerei. Diese hatte sich eine Cloudlösung von SAP gekauft, welche
-schnell an ihre Grenzen kam, was die weitere Entwicklung einer Schnittstelle nötig machte. Das Projekt wird mit C\#
-realisiert, war aber nicht bestandteil meines Praktikums.
-Im Jahr 2001 hat die \href{https://alaun.de/home/}{Alaun GmbH} das Content-Management-System Elexir an die Sparkassen
-in Deutschland verkauft, welches seit dem im Einsatz ist. Nach diesen 13 Jahren, haben sich viele Probleme im Bereich
-der Verteilten Entwicklung bemerkbar gemacht.
-Mit diesen Erfahrungen gewachsen, arbeitet die \href{https://alaun.de/home/}{Alaun GmbH} an einer Neuauflage, welche
-eine Vielzahl an Problemen mit Sprachkonzepten erschlägt. Diese Sprache trägt den Namen Cauldron und ist der Kern
-dieser \textit{neuen Welt}.
-Auf einzelheiten dieses Projektes gehe ich in den nach Folgenden Kapiteln näher ein. 
+Zu beginn wurden die beiden Haupt Projekte der Firma vorgestellt. Mein Aufgabengebiet lag im Projekt des
+CMS-Tools auf Cauldron basis. Um ein Verständnis für das Tätigkeitsfeld zu entwickeln, begann meine
+Arbeit mit dem studieren des Pflichtenheftes. 
+Das Gesamtvolumen des Projektes umfasste zu begin meines Praktikum in etwa 250000 Zeilen Quelltext.
+Mit hilfe von erstellten Videotutorials und einer Entwicklerdokumentation ließen sich die Grundlegensten
 
-\subsection{Content-Management-Systeme}
 
-Ein Content-Management-System im folgenden mit CMS abgekürzt, ist eine Software mit deren Hilfe Inhalte verteilt Entwickelt
-und Verwaltet werden könne. Diese Inhalte sind vorwiegend Text- und Multimedia-Dokumente der unterschiedlichster Formate.
-In den Meisten fällen, muss der Nutzer keinen Quellcode schreiben, er wird durch Grafische Oberflächen unterstützt, die
-ihm Helfen seine Internetauftritte einfach zusammen zu klicken.
-Wie dieses Konzept mit Cauldron umgesetz wird beschreibe ich im Folgenden.
 
  
 \end{document}
