@@ -1,4 +1,4 @@
-\documentclass{scrartcl}
+\documentclass[12pt]{article}
  
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -6,6 +6,10 @@
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage[urlcolor=blue]{hyperref}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
  
 \title{Praktikumsbericht}
 \author{Josef Schulz}
@@ -133,16 +137,100 @@ Projekte erleichtert wird. Interprettiert wird der Cauldron-Quelltext durch ein 
 Da für die Einrichtung der Entwicklungsumgebung noch keine Dokumente existierten, dokumentierte ich meine Schritte
 um nachfolgenden Programmieren einen Schnelleren Einstieg in das Projekt zu ermöglichen.
 
-Da meine Kenntnisse auf dem Gebiet der Web-Programmierung noch zu wünschen übrig ließen, ich aber durch einen Versierten
-Kollegen unterstütz wurde, begann ich mit der Entwicklung eines Primitiven Funktionsplotters. Zum Zeichnen der Funktionen
-diente ein Canvas Element und Javascript. Der Hauptschwerpunkt lag allerdings in der Gestaltung der Oberflächen.
+Meine Kenntnisse auf dem Gebiet der Web-Programmierung ließen noch zu wünschen übrig, deshalb begann ich mit der Entwicklung
+eines primitiven Funktionsplotters. Ziel der Übung war es mich mit Cauldron erst einmal vertraut zu machen.
+Ich bekam Unterstützung von einem Versierten Kollegen, der mir nicht nur Programmiertechnische Aspekte der Web-Entwicklung näherbringen konnte.
+Farben und Aufteilungen waren ebenfalls Bestandteil meines Trainings. 
+Zum Zeichnen der Funktionen diente ein Canvas Element und Javascript.
 Nach der Fertigstellung des Funktions-Plotters für einen Normalen Browser, konnte ich mit den Methoden von Cauldron
 binnen kürzester Zeit eine Mobile Version der Seite fertig stellen.
+Hier zeigten sich die Vorzüge von Komponenten und Vererbungen, mit deren hilfe sich die Anzahl an Quelltextzeilen gering gehalten
+werden konnte.
 
+\subsection{Entwicklung von Komponenten}
 
+Entwickelt man ein CMS-System, sind einfache Komponenten wie Textfeldern und Bezeichnern, welche von HTML bereitgestellt werden
+nur ein Anfang. Im Folgenden begann ich bei der Entwicklung der Komponenten zu helfen. Als Beispiel dient eine Einfache Textbox
+mit Bezeichner. Eine Solche Komponente bringt mehrere Variablen mit sich. Damit ist zum einen der Inhalt des Bezeichners und der
+Voreingestellte Inhalt der Textbox gemeint, zum anderen werden aber auch die möglichkeiten zum Gestalten und Platzieren vorgegeben.
+Auf diese Weise können sehr komplexe Komponenten entstehen, so lässt sich eine breite Pallete an Bankformularen konzipieren.
 
+Cauldron bietet aber noch viel mehr, als Designs und Formulare. Der Workflow ist eine Backendbassierte realisierung eines 
+Mealyautomaten. Durch den Einstatz von Workflows lassen sich Funktionale Komponenten konstruieren die sich im späteren Editor
+mit der Maus schnell auf eine Seite ziehen lassen.
 
+Eine Komponente ist eine Art Kontainer, mit der Möglichkeit Parameter zu übergeben und den Einsatz möglichst Variable zu gestallten.
+Komponenten können von anderen Komponenten erben und haben eine gewisse Ähnlichkeit mit Klassen. Daher eignet sich UML sehr gut zur
+Modelierung von von Komponentenstrukturen.
 
- 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{DokuPage.png}
+	\caption{Komponenten Dokumentation}
+	\label{fig:DokuPage}
+\end{figure}
+
+Neben der Entwicklung der Komponenten, haben wir eine Dokumentation dieser erstellt. Im Verlauf dieser Entwicklung haben wir
+den Prozess der Dokumentierung vereinfacht. Um nicht jedes mal an mehreren Stellen bei Änderungen die Einträge bearbeiten zu müssen,
+führten wir Tags ein. Mögliche Variablenbelegungen wurden Automatisch aus den Komponenten gezogen. Ein Ausschnit der Dokumentation
+wird in der Abbildung \ref{fig:DokuPage} dargeboten.
+
+\subsection{Seitenlayouts}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Layout.png}
+	\caption{Layoutkomponenten UML-Diagram}
+	\label{fig:Layout}
+\end{figure}
+
+Ein weiteres Aufgabenfeld bestand in der Entwicklung von Komponenten für Standartisierte Seitenformen, wie den Artikel und
+eine Präsentationskomponente. In beiden Fällen haben wir bestehende Programme studiert und daraus eine Komponenten-Strukuren
+mit UML-Diagrammen abgeleitet und ergänzt. Die Abbildung \ref{fig:Layout} zeigt die Komponenten Struktur für unsere Layout-Kontainer mit deren
+hilfe sich Inhalte automatisch anordnen lassen.
+
+\subsubsection{Präsentations-Komponenten}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Beamer.png}
+	\caption{Präsentationskomponenten UML-Diagram}
+	\label{fig:Beamer}
+\end{figure}
+
+Die Präsentationsseite besteht aus mindestens einen Kontainer für Inhalt, diese können jeweils wieder aus Kontainern oder aus Elementen bestehen.
+Es gibt eine vielzahl von Elementen die sich innerhalb eines Kontainers absolute possitionieren lassen. Die Abbildung \ref{fig:Beamer} zeigt
+das UML-Diagramm das die Komponenten Struktur unserer Präsentations-Komponenten wiederspiegelt. 
+
+Um einen kurzen Einblick in die Funktionsweise unsere Präsentationskomponenten zu geben möchte ich auf die \textit{LinkArea} etwas genauer eingehen. 
+Die Grundlegenden Elemente die in einem Kontainer plaziert werden können, werden als \textit{AbstractContentElement} bezeichnet. Von diesem leitet
+sich auf der einen Seite die \textit{AbstsractBeamerComp} und auf der anderen Seite die \textit{LinkArea} ab. Letztere besteht ebenfalls wieder
+aus Elementen des Typs \textit{AbstsractBeamerComp}. In einer \textit{LinkArea} enthaltene Elemente dienen zur Gestaltung des Links. Farben und Formen
+können überschrieben werden, wodurch sich zum Beispiel Farben beim sogenannten Hovereffekt verändern lassen.
+
+\subsubsection{Artikel-Komponenten}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Artikel.png}
+	\caption{Artikelkomponenten UML-Diagram}
+	\label{fig:Artikel}
+\end{figure}
+
+Die Artikel Komponenten bilden einen weiteren Seitentyp der aus einer vielzahl von bestehenden Programmen
+bekannt sein dürfte. In der Abbildung \ref{fig:Artikel} das entsprechende UML-Diagram dargeboten.
+Der Prinzipelle Aufbau erinnert an die Präsentationskomponenten, er unterscheidet sich aber hinsichtlich
+der Positionierungen und Unterteilungen. Ist eine Präsentation auf eine bestimmte Seitengröße festgelegt, ist diese bei der Artikelseite
+nicht vorgegeben. Artikel können beliebig lange Seitenverläufe Formen sich aber auch in kleinere Seiteneinheiten unterteilen lassen.
+Direkt integriert ist in Anlehnung an diverese Blogs eine Komentarliste mit dem entsprechenden Formular zum hinterlassen
+von Komentaren entstanden.
+
+\section{Intermezzo}
+
+Nach der Entwicklung dieser Komponentenstrukturen hatte ich die nötige Zeit um mich mit WebGL zu beschäftigen. Durch WebGL ist es Möglich
+komplexe Szenen direkt im Browser darzustellen. Zu Gestalltung der Seitenkomponenten, welche nicht durch WebGL gerendert wurden, wie \textit{Buttons}
+und \textit{Checkboxen} benutze ich HTML und CSS ohne Cauldron. Dabei zeigten sich die Vorzüge Cauldron besonders deutlich.
+Der Unterschied war um so gravierender je mehr Identische Objekte auf einer Seite benötigt wurden.
+
 \end{document}
  
