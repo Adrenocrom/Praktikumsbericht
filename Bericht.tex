@@ -225,12 +225,35 @@ nicht vorgegeben. Artikel können beliebig lange Seitenverläufe Formen sich abe
 Direkt integriert ist in Anlehnung an diverese Blogs eine Komentarliste mit dem entsprechenden Formular zum hinterlassen
 von Komentaren entstanden.
 
-\section{Intermezzo}
+\subsection{Intermezzo}
 
-Nach der Entwicklung dieser Komponentenstrukturen hatte ich die nötige Zeit um mich mit WebGL zu beschäftigen. Durch WebGL ist es Möglich
+Nach der Entwicklung dieser Komponentenstrukturen hatte ich die nötige Zeit um mich mit WebGl zu beschäftigen. Durch WebGL ist es Möglich
 komplexe Szenen direkt im Browser darzustellen. Zu Gestalltung der Seitenkomponenten, welche nicht durch WebGL gerendert wurden, wie \textit{Buttons}
 und \textit{Checkboxen} benutze ich HTML und CSS ohne Cauldron. Dabei zeigten sich die Vorzüge Cauldron besonders deutlich.
-Der Unterschied war um so gravierender je mehr Identische Objekte auf einer Seite benötigt wurden.
+Der Unterschied war um so gravierender je mehr Identische Objekte auf einer Seite benötigt wurden. Diese Erfahrung zerstreute den Rest Skepsis
+den ich gegenüber des Cauldronprojektes bis zu diesem Zeitpunkt hatte. Durch die Entwicklung mit WebGl lernte ich einiges über Javascript,
+insbesondere was die Effizens verschiedener Implementierungen angeht. Der Einsatz von WebGl könnte ebenso für besondere Darstellungsvarianten
+in das CMS integriert werden. Als bespiel könnte die Animation eines Sparkassensymbols dienen. Im gegensatz zu einfachen Gifs wäre es Interaktiv
+und bietet nahezu unbegrenzte Möglichkeiten. Der Einsatz auf Mobilen geräten, ist aber auf Grund der benötigten Rechenleistung ehr ein
+Zukunftstraum. Eine Interesannte Möglichkeit würde sich durch das Rendern von HTML in Texturen ergeben. Man wäre in der Lage Inhalte flexibel in
+einem Dreidimensionalen Raum zu bewegen. Eingabegeräte könnten ebenfalls in den 3D-Raum abgebildet werden.
+
+\subsection{Altes wird auch neu}
+
+Neben dem bisher behandelten neubau eines CMS-Tools, pflegt die \href{https://alaun.de/home/}{Alaun GmbH} den Vorgänger mit dem Namen Elexir.
+Updates und neuerungen werden nach wie vor für das alte Eisen produziert. Die Struktur von Elexir erlaubt es ebenfalls mit einer XML-Basierten
+Sprache anzupassen vorzunehmen. Die \href{https://alaun.de/home/}{Alaun GmbH} stellt externen Firmen Werkzeuge zur Entwicklung für derartige
+Erweiterungen bereit. Um diese Erweiterungen in Elexir einspielen zu können, haben wir einen Addon Manager entwickelt. Dieses Tool besteht
+ebenfalls aus eine Reihe von Scripts und ermöglich die Anbindung an einen Händler für diese Addons.
+
+Bisher wurden Erweiterungen und Neuerungen zu bestimmten Releasezeitpunkten in Form von Gepackten Archiven händisch von den Admininstratoren
+in Elexir eingespielt. Mit der Lieferung des Addon-Managers ist diese Vorgehensweise nur noch ein letzes mal nötig.
+
+Die Addons von Externen Firmen werden als Verschlüsselte Version mittels Git von den Alaunservern angezogen. Bevor diese dann als Neuerscheinung
+oder als Update im Store erscheinen, werden die Addons von einem Programm auf vollständigkeit überprüft und entsprechend Freigeschalten oder
+zurückgehalten. 
+
+Der AddonManager lösst die Kommunikation zwischen dem entsprechenden Elexirclienten und den Alauen-Servern.
 
 \end{document}
  
