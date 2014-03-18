@@ -4,6 +4,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
+\usepackage{geometry}
+\geometry{a4paper}
+
 \usepackage{amsmath}
 \usepackage[urlcolor=blue]{hyperref}
 \usepackage{graphicx}
@@ -253,7 +256,55 @@ Die Addons von Externen Firmen werden als Verschlüsselte Version mittels Git vo
 oder als Update im Store erscheinen, werden die Addons von einem Programm auf vollständigkeit überprüft und entsprechend Freigeschalten oder
 zurückgehalten. 
 
-Der AddonManager lösst die Kommunikation zwischen dem entsprechenden Elexirclienten und den Alauen-Servern.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Manager.png}
+	\caption{Download Squenzdiagram}
+	\label{fig:Manager}
+\end{figure}
+
+
+Der AddonManager lösst die Kommunikation zwischen dem entsprechenden Elexirclienten und den Alauen-Servern. Ein Elexirclient kann nicht direkt
+mit den Alaunservern kommunizieren, da beide über eine \textit{HTTPS} Verbindung laufen. Als Schnittstelle dient der Browser des Elexirnutzers.
+Die Kommunikation ist Beispielhaft in Abbildung \ref{fig:Manager} dargestellt. 
+
+Beim Zugriff auf den AddonManager wird ein \textit{JSONP-Request} ausgeführt, mit dessen hilfe wird eine Liste mit AddonId und Version an die
+Alaunserver gesendet. Der nächste Schritt besteht aus einem Aktuallitätscheck. Die Alaunserver vergleichen die Addonversionen und setzt gegebenenfalls
+ein Flag. Die Liste an updatebaren Addons wird dem Browser jetzt als Parameter der Responsefunktion übergeben.
+
+Im Folgenden wird dem Nutzer eine Liste mit seinen Addons angezeigt. Wurde das Flag für \textit{update} gesetzt, dann wird ein Button herausgerendert
+über welchen das spezifische Addon aktuallisiert werden kann. Weiterhin besteht die Möglichkeit alle Addons in einem Schritt zu aktuallisiern.
+Neue Addons können über den Addonstore erworben werden. Dazu wird über den Browser ein Button als Link angeboten. Über diesem gelangt man zum Store.
+Der Store besteht aus einer Liste mit verfügbaren und noch nicht Installierten Addons. 
+
+Die Methode zum Installieren oder Updaten ist sehr ähnlich aufgebaut. Es wird ein Request über den Browser an die Alaun Server gesendet, Addonname
+und gewünschte Version werden übergeben. Ob es sich um ein Update oder eine Neuinstallation handelt wird ebenfalls mittels Flag mitgeteilt.
+Dier Request geht an ein Servlet der Alaunserver. Das Servlet baut das geforderte Addon zusammen und packt dieses als Zip Datei. Danach wird
+der \textit{Bytestream} in einzelne Chunks unterteilt und verschlüsselt. Die Chunks werden sukzessiv über ein Formular gesendet. Die Seite mit dem 
+Formular, welche vom Browser gerendert wird, führt einen Redirekt auf Elexir aus und übergibt den Chunk an Elexir.
+
+Meine Aufgabe bestand in der Entwicklung des Servlets, welche die Zip Dateien aus den Addons erstellt, zerlegt und Chunk für Chunk über das Formular,
+durch den Browser an Elexir sendet.
+Nach dem die Grundfunktionalität bereit gestellt wurde, habe ich mich um die Anbindung einer Datenbank gekümmert. Mit der Datenbank wird sichergesellt,
+das kein Kunde Testversionen mehrmals Nutzen kann. Abgeschlossene Kaufverträge werden ebenfalls durch diese Datenbank verwaltet und werden zur
+Lizensgenerierung benötigt.
+
+Nach dem der Prototyp einwandfrei seine Arbeit tat, wurde viel daran gearbeitet die zu übertragenden Daten so weit wie nur möglich zu reduzieren.
+Werden Addons aktuallisiert, dann werden nicht wie im Prototyp die neuen Versionen einfach darüber installiert. Es wird ein Schritt mit einbezogen,
+in welchem die Unterschiede zwischen der neuen Version und dem alten Stand berechnet werden. Dadurch wird nur noch ein Minimum an Daten übertragen.
+
+\subsection{Alaun und das Internet}
+
+Meine Aufgabe am AddonManager war zu diesem Zeitpunkt weitgehend beendet. Meine neue Aufgabe bestand darin in Zusammenarbeit mit einem Kollegen
+die Internet Seite von Alaun mit Cauldron neu aufzusetzten und auf dieser die Alaun eigenen Produkte und Addons in einen Moderneren Licht leuchten
+zu lassen.
+
+\subsection{Alaun geht Online}
+
+\subsection{OCR als Zukunftsprojekt}
+
+\section{Fazit}
+
 
 \end{document}
  
