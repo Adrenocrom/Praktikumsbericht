@@ -291,20 +291,69 @@ Lizensgenerierung benötigt.
 
 Nach dem der Prototyp einwandfrei seine Arbeit tat, wurde viel daran gearbeitet die zu übertragenden Daten so weit wie nur möglich zu reduzieren.
 Werden Addons aktuallisiert, dann werden nicht wie im Prototyp die neuen Versionen einfach darüber installiert. Es wird ein Schritt mit einbezogen,
-in welchem die Unterschiede zwischen der neuen Version und dem alten Stand berechnet werden. Dadurch wird nur noch ein Minimum an Daten übertragen.
+in welchem die Unterschiede zwischen der neuen Version und dem alten Stand berechnet werden. Auf diese Weise werden nur die Fehlenden Informationen
+gesendet. Dadurch wird nur noch ein Minimum an Daten übertragen.
 
 \subsection{Alaun und das Internet}
 
 Meine Aufgabe am AddonManager war zu diesem Zeitpunkt weitgehend beendet. Meine neue Aufgabe bestand darin in Zusammenarbeit mit einem Kollegen
 die Internet Seite von Alaun mit Cauldron neu aufzusetzten und auf dieser die Alaun eigenen Produkte und Addons in einen Moderneren Licht leuchten
-zu lassen.
+zu lassen. Die Aufgabe bestand nicht nur in der Gestalltung und Beschreibung der \href{https://alaun.de/home/}{Alaun GmbH} auf ihren Internetauftritt.
+Es galt den Server einzurichten, die nötigen Programme zu installieren und das Cauldron Projekt zu kompilieren.
+Zur Bewerkstelligung dieser Aufgabe haben wir ein Apache installiert. Das Projekt haben wir mit Maven kompiliert.
+In meiner Einleitung habe ich erwähnt, dass die Realisierung oft einige Probleme mit sich bringt.
+So ließ sich das Projekt erst nach einigen Anläufen kompilieren. 
+
+Nach dem das Projekt in unserem Localen Netz verfügbar war, erstellten wir Testlisten und versuchten Fehler zu provozieren so weit dies möglich war.
+Schwerwiegende Probleme blieben aus, kleinere verweißte Links fanden wir ab und an. Mit hilfe von \textit{Selenium} und \textit{JUnit} lassen sich
+Testverfahren Automatisieren und Internetseiten auf Vollständigkeit überprüfen. Zusätzlich wurde ein Forum eingerichtet um Support zu bieten.
+
 
 \subsection{Alaun geht Online}
 
+Nachdem die nötigen Zertifikate ausgestellt waren, sollten wir bald die Veröffentlichung der Internetseite gekoppelt mit dem AddonManager feiern.
+In welchem Rahmen diese Möglichkeiten genutzt werden bleibt abzuwarten.
+
 \subsection{OCR als Zukunftsprojekt}
+
+Nachdem die arbeiten an AddonManager und Internetseite abgeschlossen waren, worde mir eine neue Aufgabe zugetragen.
+Die Aufgabe besteht in der Entwicklung einer Software, die Informationen für Banküberweisungen erkennt und in
+entsprechende Formularfelder einträgt.
+Der Aufgaben schwerpunkt liegt in der Algorithmik. Das Problem unterteilt sich in mehere Teilprobleme.
+Als erstes muss das Bild mit den nötigen Informationen gegebenenfalls entrauscht und zur weiteren Verarbeitung
+aufbereitet werden. Im zweiten Schritt müssen die Wörter, Buchstaben und Zeichen erkannt werden. Der dritte
+Schritt befasst sich mit der Klassifizierung der einzelnen Wörter, dabei werden Schlüsselwörter im Text gesucht.
+Ausgehend von den Positionen dieser auf dem Blatt Papier, werden die zugehörigen Werte bestimmt.
+Dazu kann Vorwissen verwendet werden. Es gibt bei BIC und IBAN bestimmte Bildungsvorschrifften und Größenordnungen.
+Wurden diese Positionen ebenfalls Gefunden, dann werden die Ungewissen Felder im Text geschätzt.
+In Schritt 4 werden die Daten in ein Formular geschrieben. Jetzt hat der Anwender die Möglichkeit fehler zu Korrigieren.
+
+\subsubsection{ORC als Teilproblem}
+
+OCR steht für \textit{optical charakter rekognition} und bezeichnet das Erkennen von Zeichen in Bildern.
+Zu beginn bestand der Anspruch im Finden einer guten OCR Software und der Portierung dieser.
+Es stellte sich heraus, das die meisten OCR Systeme schnell an ihre Grenzen kamen. 
+Unter den Freien Programmen wie Tesseract und OCRopus fanden sich keine Exemplare, deren Erkennungsfähigkeiten
+auch nur im Entferntesten an die benötigten Erkennungsraten herankamen.
+Die Implementierung von Acrobat Text Capture hat als einzigste getestete Software, ein akzeptables Ergebniss erziehlt.
+
+Ohne ein gutes OCRSystem lässt sich das Problem nicht lösen. Ich habe innerhalb von einer Woche ein Primitives
+einfaches OCRSystem implementiert. Dieses Zerlegt das das Problem in zwei Teilprobleme. Als erstes werden die Buchstaben
+einzeln Segmentiert. Ein vielversprechendes Verfahrung ist das der \textit{Maximalen Stabilen Regionen}. 
+Die Segmentierten Buchstaben wurden in kleine Bilder mit 64x64 Pixeln mit 8 Bit Farbtiefe transformiert.
+Diese kleinen Buchstaben werden dann mit hilfe eines \textit{Feedforward} Netzwerkes klassifiziert.
+Die Wortzuordnung erfolgte über die Possition der gefundenen Segmente.
+
+Zum Lernen der Klassifikationsfunktion, habe ich ein Reihe von Lernbeispielen verwendet. Diese Stammen allerdings nicht
+aus einer Datenbank, sondern wurden von mir mittels der Segmentierungsfunktion händisch erstellt. Hier zeigten sich
+die ersten Probleme dieses Verfahrens. Nicht bei jedem Text ließen sich die Buchstaben eindeutig Segmentieren. Unter
+umständen wurden ganze Wörter als einzelner Buchstabe erkannt. Ein anderes Problem waren Buchstaben, wie \textit{i}
+und \textit{j}. Aufgrund der Punkte, die zu eben jenen Zeichen gehören wurden durch den Segmentierungsansatz zum Teil Buchstaben
+hinzugefügt. Zu meiner eigenen Freude hat es aber bei ein paar wenigen Beispielen recht gut Funktioniert.
 
 \section{Fazit}
 
 
+
 \end{document}
- 
+
